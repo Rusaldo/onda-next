@@ -26,8 +26,7 @@ export function Footer() {
                 <NavLink href="/contact">Контакты</NavLink>
               </div>
               <p className="text-sm text-zinc-400 dark:text-zinc-500">
-                &copy; {new Date().getFullYear()} Муса Яндиев. All rights
-                reserved.
+                &copy; {new Date().getFullYear()} Муса Яндиев.
               </p>
             </div>
           </Container.Inner>
