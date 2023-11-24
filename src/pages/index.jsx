@@ -373,7 +373,7 @@ export default function Home({ articles, books }) {
       </Container>
       {/* <Photos /> */}
       <Container className="mt-24 md:mt-28">
-        <div className="mx-auto grid max-w-xl grid-cols-1 gap-x-20 lg:max-w-none lg:grid-cols-2">
+        <div className="mx-auto grid max-w-xl grid-cols-1 gap-x-20 gap-y-12 lg:max-w-none lg:grid-cols-2">
           <HomeArticles articles={articles} />
           <HomeBooks books={books} />
           {/* <div className="space-y-10 lg:pl-16 xl:pl-24">
