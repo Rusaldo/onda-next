@@ -24,6 +24,9 @@ import image5 from '@/images/photos/image-5.jpg'
 import { formatDate } from '@/lib/formatDate'
 import { generateRssFeed } from '@/lib/generateRssFeed'
 import { getAllArticles } from '@/lib/getAllArticles'
+import { getAllBooks } from '@/lib/getAllBooks'
+import { HomeArticles } from '@/components/HomeArticles'
+import { HomeBooks } from '@/components/HomeBooks'
 
 function MailIcon(props) {
   return (
@@ -329,12 +332,12 @@ function Books() {
   )
 }
 
-export default function Home({ articles }) {
+export default function Home({ articles, books }) {
   return (
     <>
       <Head>
         <title>Муса Яндиев</title>
-        <meta name="description" content="Муса Яндиев. Статьи, книги, аудио" />
+        <meta name="description" content="Муса Яндиев. Статьи, книги" />
       </Head>
       <Container className="mt-9">
         <div className="max-w-2xl">
@@ -370,17 +373,14 @@ export default function Home({ articles }) {
       </Container>
       {/* <Photos /> */}
       <Container className="mt-24 md:mt-28">
-        <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
-          <div className="flex flex-col gap-16">
-            {articles.map((article) => (
-              <Article key={article.slug} article={article} />
-            ))}
-          </div>
-          <div className="space-y-10 lg:pl-16 xl:pl-24">
-            <Books />
-            {/* <Newsletter /> */}
-            {/* <Resume /> */}
-          </div>
+        <div className="mx-auto grid max-w-xl grid-cols-1 gap-x-20 lg:max-w-none lg:grid-cols-2">
+          <HomeArticles articles={articles} />
+          <HomeBooks books={books} />
+          {/* <div className="space-y-10 lg:pl-16 xl:pl-24">
+            <Books /> */}
+          {/* <Newsletter /> */}
+          {/* <Resume /> */}
+          {/* </div> */}
         </div>
       </Container>
     </>
@@ -395,6 +395,9 @@ export async function getStaticProps() {
   return {
     props: {
       articles: (await getAllArticles())
+        .slice(0, 3)
+        .map(({ component, ...meta }) => meta),
+      books: (await getAllBooks())
         .slice(0, 3)
         .map(({ component, ...meta }) => meta),
     },

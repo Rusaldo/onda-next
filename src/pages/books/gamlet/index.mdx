@@ -1,17 +1,24 @@
 import { BookLayout } from '@/components/BookLayout'
 import Image from 'next/image'
-// import bookCover from './book-cover.jpeg'
 
 export const meta = {
   author: 'Муса Яндиев',
-  date: '2022-09-05',
+  date: '2022-09-06',
   title: 'Гамлет',
   description: 'Пьеса "Гамлет" У. Шекспира на ингушском языке',
+  coverUrl: 'https://onda.ucoz.ru/foto/gamlet.jpg',
 }
 
 export default (props) => <BookLayout meta={meta} {...props} />
 
-{/* <Image src={bookCover} alt="" /> */}
+<Image
+  src={'https://onda.ucoz.ru/foto/gamlet.jpg'}
+  width={200}
+  height={300}
+  alt=""
+/>
+
+Пьеса "Гамлет" У. Шекспира на ингушском языке
 
 # ДЕША ХЬАЛХА
 

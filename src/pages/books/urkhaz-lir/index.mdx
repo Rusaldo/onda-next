@@ -1,0 +1,21 @@
+import { BookLayout } from '@/components/BookLayout'
+import Image from 'next/image'
+
+export const meta = {
+  author: 'Муса Яндиев',
+  date: '2022-09-05',
+  title: 'Урхаз Лир (Король Лир)',
+  description: 'Пьеса "Король Лир" У. Шекспира на ингушском языке',
+  coverUrl: 'https://onda.ucoz.ru/foto/Urhaz_Lir.jpg',
+}
+
+export default (props) => <BookLayout meta={meta} {...props} />
+
+<Image
+  src={'https://onda.ucoz.ru/foto/Urhaz_Lir.jpg'}
+  width={200}
+  height={300}
+  alt=""
+/>
+
+Пьеса "Король Лир" У. Шекспира на ингушском языке

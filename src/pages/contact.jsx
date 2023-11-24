@@ -60,7 +60,7 @@ export default function Contact() {
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
             Муса Яндиев
           </h1>
-          <div className="mt-6 space-y-4 text-base text-zinc-600 dark:text-zinc-400">
+          {/* <div className="mt-6 space-y-4 text-base text-zinc-600 dark:text-zinc-400">
             <div>По вопросам приобретения книг обращайтесь:</div>
             <div className="flex text-sm">
               <Link
@@ -89,9 +89,9 @@ export default function Contact() {
               >
                 onda555@yandex.ru
               </Link>
-            </div>
+            </div> */}
 
-            {/* <p>
+          {/* <p>
                 I’ve loved making things for as long as I can remember, and
                 wrote my first program when I was 6 years old, just two weeks
                 after my mom brought home the brand new Macintosh LC 550 that I
@@ -117,7 +117,7 @@ export default function Contact() {
                 home so that the next generation of kids really <em>can</em>{' '}
                 make it to orbit — from the comfort of their own backyards.
               </p> */}
-          </div>
+          {/* </div> */}
         </div>
         {/* <div className="lg:pl-20">
           <ul role="list"> */}
