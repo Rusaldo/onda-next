@@ -60,35 +60,28 @@ export default function Contact() {
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
             Муса Яндиев
           </h1>
-          {/* <div className="mt-6 space-y-4 text-base text-zinc-600 dark:text-zinc-400">
-            <div>По вопросам приобретения книг обращайтесь:</div>
-            <div className="flex text-sm">
-              <Link
-                href="tel:+79262643440"
-                className="font-medium text-zinc-800 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
-              >
-                8 (926) 264-34-40
-              </Link>
-              <span className="ml-2">в Москве</span>
+          {/* <div className="mt-6 space-y-4 text-base text-zinc-600 dark:text-zinc-400"> */}
+          {/* <div>
+              <div></div>
+              <div className="flex text-sm">
+                <Link
+                  href="mailto:onda555@yandex.ru"
+                  className="font-medium text-zinc-800 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
+                >
+                  onda555@yandex.ru
+                </Link>
+              </div>
             </div>
-
-            <div className="flex text-sm">
-              <Link
-                href="tel:+79626461919"
-                className="font-medium text-zinc-800 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
-              >
-                8 (962) 646-19-19
-              </Link>
-              <span className="ml-2">в Республике Ингушетия</span>
-            </div>
-
-            <div className="flex text-sm">
-              <Link
-                href="mailto:onda555@yandex.ru"
-                className="font-medium text-zinc-800 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
-              >
-                onda555@yandex.ru
-              </Link>
+            <div>
+              <div>По вопросам работы сайта:</div>
+              <div className="flex text-sm">
+                <Link
+                  href="mailto:yandiev_97@mail.ru"
+                  className="font-medium text-zinc-800 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
+                >
+                  yandiev_97@mail.ru
+                </Link>
+              </div>
             </div> */}
 
           {/* <p>
@@ -133,13 +126,27 @@ export default function Contact() {
               <SocialLink href="#" icon={LinkedInIcon} className="mt-4">
                 Follow on LinkedIn
               </SocialLink> */}
-        {/* <SocialLink
-          href="mailto:onda555@yandex.ru"
-          icon={MailIcon}
-          className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
-        >
-          onda555@yandex.ru
-        </SocialLink> */}
+        <div>
+          <SocialLink
+            href="mailto:onda555@yandex.ru"
+            icon={MailIcon}
+            className="mt-8 pt-4"
+          >
+            onda555@yandex.ru
+          </SocialLink>
+        </div>
+        <div>
+          <SocialLink
+            href="mailto:yandiev_97@mail.ru"
+            icon={MailIcon}
+            className="pt-4"
+          >
+            yandiev_97@mail.ru
+          </SocialLink>
+          <span className="text-xs font-medium text-zinc-800">
+            (по вопросам работы сайта)
+          </span>
+        </div>
         {/* </ul>
         </div> */}
         {/* </div> */}

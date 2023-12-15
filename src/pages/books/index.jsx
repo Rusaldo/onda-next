@@ -6,12 +6,11 @@ import { getAllBooks } from '@/lib/getAllBooks'
 import Image from 'next/image'
 
 function BookCard({ book }) {
-  console.log('booklogo', book.cover)
   return (
     <Card className="h-full" as="article" key={book.name}>
       <div className="flex flex-col gap-8 md:flex-row">
         <Image
-          className="z-10"
+          className="z-10 rounded-2xl"
           src={book.coverUrl}
           width={200}
           height={300}

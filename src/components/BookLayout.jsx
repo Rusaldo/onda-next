@@ -5,6 +5,7 @@ import { Container } from '@/components/Container'
 import { Prose } from '@/components/Prose'
 import { formatDate } from '@/lib/formatDate'
 import Link from 'next/link'
+import Image from 'next/image'
 
 function ArrowLeftIcon(props) {
   return (
@@ -61,6 +62,13 @@ export function BookLayout({
                   <span className="ml-3">{formatDate(meta.date)}</span>
                 </time> */}
               </header>
+              <Image
+                className="my-8 rounded-3xl"
+                src={meta.coverUrl}
+                width={200}
+                height={300}
+                alt=""
+              />
               <Prose className="mt-8">{children}</Prose>
             </article>
           </div>
