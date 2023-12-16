@@ -143,7 +143,7 @@ export default function Contact() {
           >
             yandiev_97@mail.ru
           </SocialLink>
-          <span className="text-xs font-medium text-zinc-800">
+          <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
             (по вопросам работы сайта)
           </span>
         </div>
