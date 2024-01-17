@@ -32,13 +32,13 @@ export function ArticleLayout({
 
   let metaText
 
-  if (meta.publicationDate) {
-    metaText = `Опубликовано ${formatDate(meta.publicationDate)}`
+  if (meta.publicationPlace) {
+    metaText = `${meta.publicationPlace}`
   }
 
-  if (meta.publicationPlace) {
-    metaText += ` / ${meta.publicationPlace}`
-  }
+  // if (meta.publicationDate) {
+  //   metaText += ` / ${meta.publicationDate}`
+  // }
 
   return (
     <>
@@ -62,15 +62,22 @@ export function ArticleLayout({
                 <h1 className="mt-6 text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-4xl">
                   {meta.title}
                 </h1>
-                {/* {meta.publicationDate && (
-                  <time
-                    dateTime={meta.date}
+                {meta.publicationPlace && (
+                  <div
                     className="order-first flex items-center text-base text-zinc-400 dark:text-zinc-500"
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'auto 1fr',
+                      gap: '6px',
+                    }}
                   >
-                    <span className="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" />
+                    <span
+                      className="w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500"
+                      style={{ height: '80%' }}
+                    />
                     <span className="ml-3">{metaText}</span>
-                  </time>
-                )} */}
+                  </div>
+                )}
               </header>
               <Prose className="mt-8">{children}</Prose>
             </article>
