@@ -47,7 +47,12 @@ function AudioCard({ audio, onPlay }) {
       </a>
       <Card.Description>
         <audio data-selector={`audio-item-${id}`} controls onPlay={onPlay}>
-          <source src={src} type="audio/mpeg" />
+          <source
+            src={src}
+            type="audio/mpeg"
+            controls
+            controlsList="nodownload"
+          />
           Ваш браузер не поддерживает воспроизведение аудио
         </audio>
       </Card.Description>
