@@ -10,7 +10,7 @@ export function HomeBooks({ books }) {
       <h2 className="mb-12 flex text-2xl font-semibold text-zinc-900 dark:text-zinc-100">
         Книги
       </h2>
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-12">
         {books.map((book) => (
           <Book key={book.slug} book={book} />
         ))}
