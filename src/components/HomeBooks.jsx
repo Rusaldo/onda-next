@@ -1,5 +1,6 @@
 import { Card } from '@/components/Card'
 import { formatDate } from '@/lib/formatDate'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export function HomeBooks({ books }) {
@@ -28,12 +29,16 @@ function Book({ book }) {
   console.log('book', book)
   return (
     <Card as="article">
-      <Card.Title href={`/books/${book.slug}`}>{book.title}</Card.Title>
-      {/* <Card.Eyebrow as="time" dateTime={article.date} decorate>
-        {formatDate(article.date)}
-      </Card.Eyebrow>
-      <Card.Description>{article.description}</Card.Description>
-      <Card.Cta>Читать далее</Card.Cta> */}
+      <div className="flex">
+        <Image
+          className="z-10 mr-4 rounded"
+          src={book.coverUrl}
+          width={80}
+          height={120}
+          alt=""
+        />
+        <Card.Title href={`/books/${book.slug}`}>{book.title}</Card.Title>
+      </div>
     </Card>
   )
 }
