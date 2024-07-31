@@ -26,7 +26,6 @@ export function HomeBooks({ books }) {
 }
 
 function Book({ book }) {
-  console.log('book', book)
   return (
     <Card as="article">
       <div className="flex">
@@ -36,6 +35,7 @@ function Book({ book }) {
           width={80}
           height={120}
           alt=""
+          style={{ minWidth: '80px' }}
         />
         <Card.Title href={`/books/${book.slug}`}>{book.title}</Card.Title>
       </div>
