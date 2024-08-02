@@ -1,13 +1,20 @@
 import * as Tooltip from '@radix-ui/react-tooltip'
 
-export default function InfoTooltip({ children, content }) {
+export default function InfoTooltip({ children, content, variant = 'info' }) {
+  const triggerStyles =
+    variant === 'source'
+      ? 'cursor-pointer whitespace-nowrap'
+      : 'cursor-pointer whitespace-nowrap underline decoration-dotted'
+
   return (
     <Tooltip.Provider>
       <Tooltip.Root>
         <Tooltip.Trigger asChild>
-          <span className="cursor-pointer whitespace-nowrap underline decoration-dotted">
+          <span className={triggerStyles}>
             {children}
-            <sup className="text-teal-500">?</sup>
+            <sup className="text-teal-500">
+              {variant === 'source' ? '[?]' : '?'}
+            </sup>
           </span>
         </Tooltip.Trigger>
         <Tooltip.Portal>
