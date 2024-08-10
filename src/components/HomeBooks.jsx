@@ -4,7 +4,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export function HomeBooks({ books }) {
-  console.log('books', books)
   return (
     <div>
       <h2 className="mb-12 flex text-2xl font-semibold text-zinc-900 dark:text-zinc-100">

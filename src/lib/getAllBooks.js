@@ -19,5 +19,5 @@ export async function getAllBooks() {
 
   let books = await Promise.all(bookFilenames.map(importBook))
 
-  return books.sort((a, z) => new Date(z.date) - new Date(a.date))
+  return books.sort((a, b) => new Date(b.date) - new Date(a.date))
 }

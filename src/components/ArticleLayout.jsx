@@ -75,7 +75,7 @@ export function ArticleLayout({
                       className="w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500"
                       style={{ height: '80%' }}
                     />
-                    <span className="ml-3">{metaText}</span>
+                    <span className="ml-3">Опубликовано в: {metaText}</span>
                   </div>
                 )}
               </header>
