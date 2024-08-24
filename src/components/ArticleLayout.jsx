@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { Container } from '@/components/Container'
 import { Prose } from '@/components/Prose'
 import { formatDate } from '@/lib/formatDate'
+import Tag from '@/components/ui/Tag'
 
 function ArrowLeftIcon(props) {
   return (
@@ -62,9 +63,18 @@ export function ArticleLayout({
                 <h1 className="mt-6 text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-4xl">
                   {meta.title}
                 </h1>
+
+                {meta.tags?.length > 0 && (
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    {meta.tags.map((tag, index) => (
+                      <Tag key={index}>{tag}</Tag>
+                    ))}
+                  </div>
+                )}
+
                 {meta.publicationPlace && (
                   <div
-                    className="order-first flex items-center text-base text-zinc-400 dark:text-zinc-500"
+                    className="mt-6 flex items-center text-base text-zinc-500 dark:text-zinc-500"
                     style={{
                       display: 'grid',
                       gridTemplateColumns: 'auto 1fr',

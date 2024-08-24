@@ -54,6 +54,23 @@ export function BookLayout({
                 <h1 className="mt-6 text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-4xl">
                   {meta.title}
                 </h1>
+
+                {meta.bookInfo && (
+                  <div
+                    className="mt-6 flex items-center text-base text-zinc-400 dark:text-zinc-500"
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'auto 1fr',
+                      gap: '6px',
+                    }}
+                  >
+                    <span
+                      className="w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500"
+                      style={{ height: '80%' }}
+                    />
+                    <span className="ml-3">{meta.bookInfo}</span>
+                  </div>
+                )}
                 {/* <time
                   dateTime={meta.date}
                   className="order-first flex items-center text-base text-zinc-400 dark:text-zinc-500"

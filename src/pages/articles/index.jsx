@@ -4,6 +4,7 @@ import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { formatDate } from '@/lib/formatDate'
 import { getAllArticles } from '@/lib/getAllArticles'
+import Tag from '@/components/ui/Tag'
 
 function Article({ article }) {
   return (
@@ -12,6 +13,16 @@ function Article({ article }) {
         <Card.Title href={`/articles/${article.slug}`}>
           {article.title}
         </Card.Title>
+
+        <div className="z-10 mt-2 mb-3">
+          {article.tags?.length > 0 && (
+            <div className=" flex flex-wrap gap-3">
+              {article.tags.map((tag, index) => (
+                <Tag key={index}>{tag}</Tag>
+              ))}
+            </div>
+          )}
+        </div>
         {/* <Card.Eyebrow
           as="time"
           dateTime={article.date}
