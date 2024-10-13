@@ -13,7 +13,8 @@ export async function generateRssFeed() {
 
   let feed = new Feed({
     title: author.name,
-    description: 'Муса Яндиев. Ингушский язык. Г1алг1ай мотт',
+    description:
+      'Муса Яндиев. Ингушский язык. Г1алг1ай мотт. Ингуши. История. История ингушей. Республика Ингушетия. Право',
     author,
     id: siteUrl,
     link: siteUrl,
