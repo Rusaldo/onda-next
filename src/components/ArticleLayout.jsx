@@ -1,9 +1,7 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { useParams } from 'next/navigation'
 import { Container } from '@/components/Container'
 import { Prose } from '@/components/Prose'
-import { formatDate } from '@/lib/formatDate'
 import Tag from '@/components/ui/Tag'
 import { useEffect, useState } from 'react'
 
@@ -18,6 +16,20 @@ function ArrowLeftIcon(props) {
       />
     </svg>
   )
+}
+
+const incrementViews = async (articleSlug) => {
+  try {
+    await fetch('/api/views/increment', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ articleSlug }),
+    })
+  } catch (error) {
+    console.error('Failed to increment views:', error)
+  }
 }
 
 export function ArticleLayout({ children, meta, isRssFeed = false, params }) {
@@ -38,23 +50,19 @@ export function ArticleLayout({ children, meta, isRssFeed = false, params }) {
       }
     }
 
-    const incrementViews = async () => {
-      try {
-        await fetch('/api/views/increment', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ articleSlug }),
-        })
-      } catch (error) {
-        console.error('Failed to increment views:', error)
-      }
-    }
-
     if (articleSlug) {
       fetchViews()
-      incrementViews()
+    }
+  }, [articleSlug])
+
+  useEffect(() => {
+    // считаем что юзер просмотрел страницу только спустя некоторого времени проведенного на странице
+    const timer = setTimeout(() => {
+      incrementViews(articleSlug)
+    }, 3000)
+
+    return () => {
+      clearTimeout(timer)
     }
   }, [articleSlug])
 

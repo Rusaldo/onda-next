@@ -69,6 +69,41 @@ function Article({ article }) {
 }
 
 export default function ArticlesIndex({ articles }) {
+  // const articlesSlugs = articles.map((article) => article.slug)
+  // const [articlesCounters, setArticlesCounters] = useState([])
+
+  // useEffect(() => {
+  //   const fetchViews = async () => {
+  //     try {
+  //       const res = await fetch('/api/views/all', {
+  //         method: 'POST',
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //         },
+  //         body: JSON.stringify({ articlesSlugs }),
+  //       })
+  //       const data = await res.json()
+
+  //       setArticlesCounters(data)
+
+  //       return data
+  //     } catch (error) {
+  //       console.error('Failed to fetch all views:', error)
+  //     }
+  //   }
+
+  //   fetchViews()
+  // }, [])
+
+  // const getCounter = (articleSlug) => {
+  //   if (!articlesCounters?.length) {
+  //     return
+  //   }
+  //   const item = articlesCounters?.find((a) => a.slug === articleSlug)
+
+  //   return item.counter
+  // }
+
   return (
     <>
       <Head>
