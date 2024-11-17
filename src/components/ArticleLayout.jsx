@@ -1,10 +1,11 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-
+import { useParams } from 'next/navigation'
 import { Container } from '@/components/Container'
 import { Prose } from '@/components/Prose'
 import { formatDate } from '@/lib/formatDate'
 import Tag from '@/components/ui/Tag'
+import { useEffect, useState } from 'react'
 
 function ArrowLeftIcon(props) {
   return (
@@ -19,13 +20,43 @@ function ArrowLeftIcon(props) {
   )
 }
 
-export function ArticleLayout({
-  children,
-  meta,
-  isRssFeed = false,
-  previousPathname,
-}) {
+export function ArticleLayout({ children, meta, isRssFeed = false, params }) {
   let router = useRouter()
+  const path = router?.pathname?.split('/')
+
+  const articleSlug = path ? path[path.length - 1] : undefined
+  const [views, setViews] = useState(null)
+
+  useEffect(() => {
+    const fetchViews = async () => {
+      try {
+        const res = await fetch(`/api/views/${articleSlug}`)
+        const data = await res.json()
+        setViews(data.views)
+      } catch (error) {
+        console.error('Failed to fetch views:', error)
+      }
+    }
+
+    const incrementViews = async () => {
+      try {
+        await fetch('/api/views/increment', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ articleSlug }),
+        })
+      } catch (error) {
+        console.error('Failed to increment views:', error)
+      }
+    }
+
+    if (articleSlug) {
+      fetchViews()
+      incrementViews()
+    }
+  }, [articleSlug])
 
   if (isRssFeed) {
     return children
@@ -90,6 +121,12 @@ export function ArticleLayout({
                 )}
               </header>
               <Prose className="mt-8">{children}</Prose>
+
+              <hr className="mt-12 border-zinc-200 dark:border-zinc-700/80" />
+
+              <div className="mt-4 text-sm text-zinc-500 dark:text-zinc-400">
+                Просмотров: <strong>{views}</strong>
+              </div>
             </article>
           </div>
         </div>
