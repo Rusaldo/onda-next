@@ -6,6 +6,7 @@ import { Prose } from '@/components/Prose'
 import { formatDate } from '@/lib/formatDate'
 import Link from 'next/link'
 import Image from 'next/image'
+import ChevronRightIcon from './icons/ChevronRightIcon'
 
 function ArrowLeftIcon(props) {
   return (
@@ -87,6 +88,14 @@ export function BookLayout({
                 alt=""
               />
               <Prose className="mt-8">{children}</Prose>
+
+              <Link
+                href="/contact"
+                className="relative z-10 mt-4 flex items-center text-sm font-medium text-teal-500"
+              >
+                По вопросам приобритения книг
+                <ChevronRightIcon className="ml-1 h-4 w-4 stroke-current" />
+              </Link>
             </article>
           </div>
         </div>

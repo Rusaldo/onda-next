@@ -57,7 +57,7 @@ export default function Contact() {
           </div>
         </div> */}
         <div className="lg:order-first lg:row-span-2">
-          <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
             Муса Яндиев
           </h1>
           {/* <div className="mt-6 space-y-4 text-base text-zinc-600 dark:text-zinc-400"> */}
@@ -126,26 +126,23 @@ export default function Contact() {
               <SocialLink href="#" icon={LinkedInIcon} className="mt-4">
                 Follow on LinkedIn
               </SocialLink> */}
-        <div>
-          <SocialLink
-            href="mailto:onda555@yandex.ru"
-            icon={MailIcon}
-            className="mt-8 pt-4"
-          >
+        <div className="mt-8 pt-4">
+          <span className="text-md font-medium text-zinc-600 dark:text-zinc-400">
+            По вопросам приобретения книг обращайтесь по адресу электронной
+            почты:
+          </span>
+
+          <SocialLink href="mailto:onda555@yandex.ru" icon={MailIcon}>
             onda555@yandex.ru
           </SocialLink>
         </div>
-        <div>
-          <SocialLink
-            href="mailto:yandiev_97@mail.ru"
-            icon={MailIcon}
-            className="pt-4"
-          >
+        <div className="pt-4">
+          <span className="text-md font-medium text-zinc-600 dark:text-zinc-400">
+            По вопросам работы сайта:
+          </span>
+          <SocialLink href="mailto:yandiev_97@mail.ru" icon={MailIcon}>
             yandiev_97@mail.ru
           </SocialLink>
-          <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
-            (по вопросам работы сайта)
-          </span>
         </div>
         {/* </ul>
         </div> */}
