@@ -12,6 +12,10 @@ export const mainNavList = [
     slug: 'audio',
   },
   {
+    name: 'Видео',
+    slug: 'video',
+  },
+  {
     name: 'Контакты',
     slug: 'contact',
   },
