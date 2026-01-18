@@ -6,13 +6,22 @@ import Image from 'next/image'
 
 export const videoList = [
   {
+    id: '2',
+    name: 'Г1алг1ай Исса Кодзоев 1 часть',
+    src: 'https://vkvideo.ru/video_ext.php?oid=1088826051&id=456239018&hash=ccdca785e2056350&hd=3',
+    thumbnailUrl:
+      'https://sun9-18.userapi.com/impg/4qSMkDnM2wzEKuE8Jk6U1ciWHMo4o9GTQ3GCbw/TXdfVPZuCUI.jpg?size=800x450&quality=95&keep_aspect_ratio=1&background=000000&sign=4b1e6948c47fa13d88f01420e7434cdf&type=video_thumb',
+    description:
+      'Сюжет о романе Г1алг1ай Иссы Кодзоева 1 часть, ГТРК Ингушетия, 18.11.2025, автор Хава Абадиева',
+  },
+  {
     id: '1',
-    name: 'Г1алг1ай Исса Кодзоев',
+    name: 'Г1алг1ай Исса Кодзоев 2 часть',
     src: 'https://vkvideo.ru/video_ext.php?oid=1088826051&id=456239017&hd=3',
     thumbnailUrl:
       'https://sun9-18.userapi.com/impg/4qSMkDnM2wzEKuE8Jk6U1ciWHMo4o9GTQ3GCbw/TXdfVPZuCUI.jpg?size=800x450&quality=95&keep_aspect_ratio=1&background=000000&sign=4b1e6948c47fa13d88f01420e7434cdf&type=video_thumb',
     description:
-      'Сюжет о романе Г1алг1ай Иссы Кодзоева, ГТРК Ингушетия, 01.12.2025, автор Хава Абадиева',
+      'Сюжет о романе Г1алг1ай Иссы Кодзоева 2 часть, ГТРК Ингушетия, 01.12.2025, автор Хава Абадиева',
   },
 ]
 
