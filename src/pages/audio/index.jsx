@@ -4,6 +4,11 @@ import { Card } from '@/components/Card'
 
 export const audioList = [
   {
+    id: '7',
+    name: 'Борзи Iаьхари. Муталиев Хаджибикар',
+    src: '/audio/Яндиев Муса - Борзи Iаьхари.mp3',
+  },
+  {
     id: '1',
     name: 'Джамалда',
     src: '/audio/Яндиев Муса - Джамалда.mp3',
