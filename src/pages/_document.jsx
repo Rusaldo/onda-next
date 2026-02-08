@@ -83,15 +83,6 @@ export default function Document() {
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
       <body className="flex h-full flex-col bg-zinc-50 dark:bg-black">
-        <noscript>
-          <div>
-            <img
-              src={`https://mc.yandex.ru/watch/${yandexMetrikaId}`}
-              style={{ position: 'absolute', left: '-9999px' }}
-              alt=""
-            />
-          </div>
-        </noscript>
         <Main />
         <NextScript />
       </body>
