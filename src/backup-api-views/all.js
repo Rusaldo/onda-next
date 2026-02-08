@@ -11,7 +11,6 @@ export default async function handler(req, res) {
   try {
     const { articlesSlugs } = req.body
 
-    // Проверка, чтобы articlesSlugs был передан и был массивом
     if (!articlesSlugs || !Array.isArray(articlesSlugs)) {
       return res
         .status(400)

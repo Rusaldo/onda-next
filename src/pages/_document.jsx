@@ -1,4 +1,5 @@
 import { Head, Html, Main, NextScript } from 'next/document'
+import { SITE_URL } from '@/utils/constants'
 
 const modeScript = `
   let darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
@@ -36,19 +37,31 @@ const modeScript = `
 `
 
 export default function Document() {
+  const yandexMetrikaId = 97921551
+  const yandexMetrikaScript = `
+    (function(m,e,t,r,i,k,a){
+      m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();
+      for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+    ym(${yandexMetrikaId}, 'init', {clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+  `
+
   return (
     <Html className="h-full antialiased" lang="ru">
       <Head>
+        <script dangerouslySetInnerHTML={{ __html: yandexMetrikaScript }} />
         <script dangerouslySetInnerHTML={{ __html: modeScript }} />
         <link
           rel="alternate"
           type="application/rss+xml"
-          href={`${process.env.NEXT_PUBLIC_SITE_URL}/rss/feed.xml`}
+          href={`${SITE_URL}/rss/feed.xml`}
         />
         <link
           rel="alternate"
           type="application/feed+json"
-          href={`${process.env.NEXT_PUBLIC_SITE_URL}/rss/feed.json`}
+          href={`${SITE_URL}/rss/feed.json`}
         />
         <link
           rel="apple-touch-icon"
@@ -70,6 +83,15 @@ export default function Document() {
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
       <body className="flex h-full flex-col bg-zinc-50 dark:bg-black">
+        <noscript>
+          <div>
+            <img
+              src={`https://mc.yandex.ru/watch/${yandexMetrikaId}`}
+              style={{ position: 'absolute', left: '-9999px' }}
+              alt=""
+            />
+          </div>
+        </noscript>
         <Main />
         <NextScript />
       </body>

@@ -7,8 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "next export",
-    "deploy": "npm run build && npm run export"
+    "deploy": "npm run build",
+    "preview": "npx serve out"
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {

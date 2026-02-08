@@ -1,3 +1,7 @@
+/**
+ * Используется API счётчика просмотров (см. src/backup-api-views/).
+ * При статическом экспорте API отключены, этот модуль не вызывается.
+ */
 import { Redis } from '@upstash/redis'
 
 const redis = new Redis({

@@ -2,9 +2,9 @@ import Head from 'next/head'
 import { Container } from '@/components/Container'
 import { Prose } from '@/components/Prose'
 import Tag from '@/components/ui/Tag'
-import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { useArticleSlug } from './ArticleRouter'
+// import { useEffect, useState } from 'react'
+// import { useArticleSlug } from './ArticleRouter' // для счётчика просмотров
 
 function ArrowLeftIcon(props) {
   return (
@@ -19,51 +19,49 @@ function ArrowLeftIcon(props) {
   )
 }
 
-const incrementViews = async (articleSlug) => {
-  try {
-    await fetch('/api/views/increment', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ articleSlug }),
-    })
-  } catch (error) {
-    console.error('Failed to increment views:', error)
-  }
-}
+// Счётчик просмотров отключён для статического хостинга (без Node).
+// Чтобы вернуть: раскомментировать этот блок и восстановить API routes из backup-api-views/
+// const incrementViews = async (articleSlug) => {
+//   try {
+//     await fetch('/api/views/increment', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify({ articleSlug }),
+//     })
+//   } catch (error) {
+//     console.error('Failed to increment views:', error)
+//   }
+// }
 
 export function ArticleLayout({ children, meta, isRssFeed = false, params }) {
   // Используем хук, который безопасно получает slug из роутера только на клиенте
-  const articleSlug = useArticleSlug(params, meta)
-  const [views, setViews] = useState(null)
+  // const articleSlug = useArticleSlug(params, meta)
+  // const [views, setViews] = useState(null)
 
-  useEffect(() => {
-    const fetchViews = async () => {
-      try {
-        const res = await fetch(`/api/views/${articleSlug}`)
-        const data = await res.json()
-        setViews(data.views)
-      } catch (error) {
-        console.error('Failed to fetch views:', error)
-      }
-    }
-
-    if (articleSlug) {
-      fetchViews()
-    }
-  }, [articleSlug])
-
-  useEffect(() => {
-    // считаем что юзер просмотрел страницу только спустя некоторого времени проведенного на странице
-    const timer = setTimeout(() => {
-      incrementViews(articleSlug)
-    }, 3000)
-
-    return () => {
-      clearTimeout(timer)
-    }
-  }, [articleSlug])
+  // useEffect(() => {
+  //   const fetchViews = async () => {
+  //     try {
+  //       const res = await fetch(`/api/views/${articleSlug}`)
+  //       const data = await res.json()
+  //       setViews(data.views)
+  //     } catch (error) {
+  //       console.error('Failed to fetch views:', error)
+  //     }
+  //   }
+  //
+  //   if (articleSlug) {
+  //     fetchViews()
+  //   }
+  // }, [articleSlug])
+  //
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     incrementViews(articleSlug)
+  //   }, 3000)
+  //   return () => clearTimeout(timer)
+  // }, [articleSlug])
 
   if (isRssFeed) {
     return children
@@ -128,15 +126,15 @@ export function ArticleLayout({ children, meta, isRssFeed = false, params }) {
               </header>
               <Prose className="mt-8">{children}</Prose>
 
-              {process.env.NODE_ENV === 'development' && (
+              {/* Счётчик просмотров отключён для статического хостинга */}
+              {/* {process.env.NODE_ENV === 'development' && (
                 <>
                   <hr className="mt-12 border-zinc-200 dark:border-zinc-700/80" />
-
                   <div className="mt-4 text-sm text-zinc-500 dark:text-zinc-400">
                     Просмотров: <strong>{views}</strong>
                   </div>
                 </>
-              )}
+              )} */}
             </article>
           </div>
         </div>
