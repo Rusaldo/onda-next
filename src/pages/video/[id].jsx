@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import { Container } from '@/components/Container'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import { videoList } from '@/pages/video'
 
 function ArrowLeftIcon(props) {
@@ -35,23 +34,25 @@ function VideoPlayer({ videoSrc }) {
   )
 }
 
-export default function Video() {
-  const router = useRouter()
-  const { id } = router.query
+export async function getStaticPaths() {
+  const paths = videoList.map((video) => ({ params: { id: video.id } }))
+  return { paths, fallback: false }
+}
 
-  const videoObject = videoList.find((video) => video.id === String(id))
+export async function getStaticProps({ params }) {
+  const video = videoList.find((v) => v.id === String(params.id))
+  if (!video) return { notFound: true }
+  return { props: { video } }
+}
 
-  if (!videoObject) {
-    return <></>
-  }
-
-  const title = `Видео - Муса Яндиев - ${videoObject.name}`
+export default function VideoPage({ video }) {
+  const title = `Видео - Муса Яндиев - ${video.name}`
 
   return (
     <>
       <Head>
         <title>{title}</title>
-        <meta name="description" content={videoObject.description || title} />
+        <meta name="description" content={video.description || title} />
       </Head>
 
       <Container className="mt-16 lg:mt-32">
@@ -68,17 +69,17 @@ export default function Video() {
             <article>
               <header className="flex flex-col">
                 <h1 className="mt-6 text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-4xl">
-                  {videoObject.name}
+                  {video.name}
                 </h1>
-                {videoObject.description && (
+                {video.description && (
                   <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-                    {videoObject.description}
+                    {video.description}
                   </p>
                 )}
               </header>
 
               <div className="mt-16 sm:mt-20">
-                <VideoPlayer videoSrc={videoObject.src} />
+                <VideoPlayer videoSrc={video.src} />
               </div>
             </article>
           </div>

@@ -1,11 +1,8 @@
 import Head from 'next/head'
-import { useParams } from 'next/navigation'
-import { SimpleLayout } from '@/components/SimpleLayout'
-import { audioList } from '.'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { audioList } from '.'
 
 function ArrowLeftIcon(props) {
   return (
@@ -38,17 +35,19 @@ function AudioCard({ audio, onPlay }) {
   )
 }
 
-export default function Audio({ params }) {
-  const router = useRouter()
-  const { id } = router.query
+export async function getStaticPaths() {
+  const paths = audioList.map((audio) => ({ params: { id: audio.id } }))
+  return { paths, fallback: false }
+}
 
-  const audioObject = audioList.find((audio) => audio.id === String(id))
+export async function getStaticProps({ params }) {
+  const audio = audioList.find((a) => a.id === String(params.id))
+  if (!audio) return { notFound: true }
+  return { props: { audio } }
+}
 
-  if (!audioObject) {
-    return <></>
-  }
-
-  const title = `Аудио - ${audioObject.name}`
+export default function AudioPage({ audio }) {
+  const title = `Аудио - ${audio.name}`
 
   return (
     <>
@@ -76,7 +75,7 @@ export default function Audio({ params }) {
               </header>
 
               <div className="mt-16 sm:mt-20">
-                <AudioCard audio={audioObject} />
+                <AudioCard audio={audio} />
               </div>
             </article>
           </div>
