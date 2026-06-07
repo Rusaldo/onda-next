@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import { SeoHead } from '@/components/SeoHead'
 
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
@@ -106,10 +106,11 @@ export default function ArticlesIndex({ articles }) {
 
   return (
     <>
-      <Head>
-        <title>Статьи - Муса Яндиев</title>
-        <meta name="description" content="Список статей" />
-      </Head>
+      <SeoHead
+        title="Статьи"
+        description="Статьи автора Муса Яндиев об ингушском языке, истории и праве."
+        path="/articles/"
+      />
       <SimpleLayout title="Статьи" intro="Все статьи">
         <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
           <div className="flex max-w-3xl flex-col space-y-16">

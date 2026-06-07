@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import { SeoHead } from '@/components/SeoHead'
 import Image from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
@@ -40,10 +40,11 @@ function MailIcon(props) {
 export default function Contact() {
   return (
     <>
-      <Head>
-        <title>Контакты - Муса Яндиев</title>
-        <meta name="description" content="Контакты - Муса Яндиев" />
-      </Head>
+      <SeoHead
+        title="Контакты"
+        description="Контакты - Муса Яндиев"
+        path="/contact/"
+      />
       <Container className="mt-16 sm:mt-32">
         {/* <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12"> */}
         {/* <div className="lg:pl-20">

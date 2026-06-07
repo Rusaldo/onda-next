@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import { SeoHead } from '@/components/SeoHead'
 
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
@@ -30,10 +30,11 @@ function BookCard({ book }) {
 export default function BooksIndex({ books }) {
   return (
     <>
-      <Head>
-        <title>Книги - Муса Яндиев</title>
-        <meta name="description" content="Книги" />
-      </Head>
+      <SeoHead
+        title="Книги"
+        description="Книги автора Муса Яндиев: исследования ингушского языка и истории, словари, переводы."
+        path="/books/"
+      />
       <SimpleLayout title="Книги" intro="Все книги">
         <ul role="list" className="grid grid-cols-1 gap-y-16">
           {books.map((book) => (

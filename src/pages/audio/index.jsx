@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import { SeoHead } from '@/components/SeoHead'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { Card } from '@/components/Card'
 
@@ -6,37 +6,37 @@ export const audioList = [
   {
     id: '7',
     name: 'Борзи Iаьхари. Муталиев Хаджибикар',
-    src: '/audio/Яндиев Муса - Борзи Iаьхари.mp3',
+    src: '/audio/7-borzi-iaxhari.mp3',
   },
   {
     id: '1',
     name: 'Джамалда',
-    src: '/audio/Яндиев Муса - Джамалда.mp3',
+    src: '/audio/1-dzhamalda.mp3',
   },
   {
     id: '2',
     name: 'Лоамчу баьхаб вай дай хьалха',
-    src: '/audio/Яндиев Муса - Лоамчу баьхаб вай дай хьалха.mp3',
+    src: '/audio/2-loamchu-bakhab.mp3',
   },
   {
     id: '3',
     name: 'Ма хета, новкъостий, ма хета',
-    src: '/audio/Яндиев Муса - Ма хета, новкъостий, ма хета.mp3',
+    src: '/audio/3-ma-kheta.mp3',
   },
   {
     id: '4',
     name: 'ХIанад ва-те гIалгIачоа ший мотт ца безалга',
-    src: '/audio/Яндиев Муса - ХIанад ва-те гIалгIачоа ший мотт ца безалга.mp3',
+    src: '/audio/4-khianad-galgal-choa.mp3',
   },
   {
     id: '5',
     name: 'Ц1увза хьа бокъо яц',
-    src: '/audio/Яндиев Муса - Ц1увза хьа бокъо яц.mp3',
+    src: '/audio/5-tsuvza-bokho-yats.mp3',
   },
   {
     id: '6',
     name: 'Эса Марш',
-    src: '/audio/Яндиев Муса - Эса Марш.mp3',
+    src: '/audio/6-esa-marsh.mp3',
   },
 ]
 
@@ -78,10 +78,11 @@ export default function Audio() {
 
   return (
     <>
-      <Head>
-        <title>Аудио - Муса Яндиев</title>
-        <meta name="description" content="Аудио - Муса Яндиев" />
-      </Head>
+      <SeoHead
+        title="Аудио"
+        description="Аудиозаписи Муса Яндиев: стихи и произведения на ингушском языке."
+        path="/audio/"
+      />
       <SimpleLayout title="Аудио">
         <div className="flex max-w-3xl flex-col space-y-16">
           {audioList.map((audio, index) => (

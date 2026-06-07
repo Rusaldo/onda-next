@@ -1,5 +1,6 @@
-import Head from 'next/head'
+import { useRouter } from 'next/router'
 
+import { SeoHead } from '@/components/SeoHead'
 import { Container } from '@/components/Container'
 import { Prose } from '@/components/Prose'
 import { formatDate } from '@/lib/formatDate'
@@ -20,22 +21,29 @@ function ArrowLeftIcon(props) {
   )
 }
 
-export function BookLayout({
-  children,
-  meta,
-  isRssFeed = false,
-  previousPathname,
-}) {
+function BookSeo({ meta }) {
+  const router = useRouter()
+
+  return (
+    <SeoHead
+      title={meta.title}
+      description={meta.description}
+      path={router.asPath.split('?')[0]}
+      type="book"
+      image={meta.coverUrl}
+      datePublished={meta.date}
+    />
+  )
+}
+
+export function BookLayout({ children, meta, isRssFeed = false }) {
   if (isRssFeed) {
     return children
   }
 
   return (
     <>
-      <Head>
-        <title>{`${meta.title} - Муса Яндиев`}</title>
-        <meta name="description" content={meta.description} />
-      </Head>
+      <BookSeo meta={meta} />
       <Container className="mt-16 lg:mt-32">
         <div className="xl:relative">
           <div className="mx-auto max-w-2xl">

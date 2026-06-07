@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import { SeoHead } from '@/components/SeoHead'
 import Image from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
@@ -7,7 +7,7 @@ import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import { formatDate } from '@/lib/formatDate'
-import { generateRssFeed } from '@/lib/generateRssFeed'
+import { generateSeoAssets } from '@/lib/generateSeoAssets'
 import { getAllArticles } from '@/lib/getAllArticles'
 import { getAllBooks } from '@/lib/getAllBooks'
 import { HomeArticles } from '@/components/HomeArticles'
@@ -320,10 +320,12 @@ function Books() {
 export default function Home({ articles, books }) {
   return (
     <>
-      <Head>
-        <title>Муса Яндиев</title>
-        <meta name="description" content="Муса Яндиев. Статьи, книги" />
-      </Head>
+      <SeoHead
+        title="Муса Яндиев"
+        description="Муса Яндиев. Ингушский язык. Г1алг1ай мотт. Статьи, книги, аудио и видео."
+        path="/"
+        noSuffix
+      />
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
@@ -378,7 +380,7 @@ export default function Home({ articles, books }) {
 
 export async function getStaticProps() {
   if (process.env.NODE_ENV === 'production') {
-    await generateRssFeed()
+    await generateSeoAssets()
   }
 
   return {

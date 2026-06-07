@@ -9,7 +9,6 @@ import '@/styles/global.css'
 import 'focus-visible'
 
 // TODO:
-// rss feed книги и аудио
 // счетчик просмотров статей
 // теги на статьи
 

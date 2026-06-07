@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import { SeoHead } from '@/components/SeoHead'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { Card } from '@/components/Card'
 import Link from 'next/link'
@@ -71,10 +71,11 @@ function VideoCard({ video }) {
 export default function Video() {
   return (
     <>
-      <Head>
-        <title>Видео - Муса Яндиев</title>
-        <meta name="description" content="Видео - Муса Яндиев" />
-      </Head>
+      <SeoHead
+        title="Видео"
+        description="Видео - Муса Яндиев."
+        path="/video/"
+      />
       <SimpleLayout title="Видео">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {videoList.map((video) => (

@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import { SeoHead } from '@/components/SeoHead'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import Link from 'next/link'
@@ -47,14 +47,17 @@ export async function getStaticProps({ params }) {
 }
 
 export default function AudioPage({ audio }) {
-  const title = `Аудио - ${audio.name}`
+  const description = `Аудиозапись «${audio.name}». Муса Яндиев.`
 
   return (
     <>
-      <Head>
-        <title>{title}</title>
-        <meta name="description" content={title} />
-      </Head>
+      <SeoHead
+        title={audio.name}
+        description={description}
+        path={`/audio/${audio.id}/`}
+        type="audio"
+        contentUrl={audio.src}
+      />
 
       <Container className="mt-16 lg:mt-32">
         <div className="xl:relative">
@@ -70,7 +73,7 @@ export default function AudioPage({ audio }) {
             <article>
               <header className="flex flex-col">
                 <h1 className="mt-6 text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-4xl">
-                  {title}
+                  {audio.name}
                 </h1>
               </header>
 

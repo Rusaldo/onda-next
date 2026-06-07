@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import { SeoHead } from '@/components/SeoHead'
 import { Container } from '@/components/Container'
 import Link from 'next/link'
 import { videoList } from '@/pages/video'
@@ -46,14 +46,20 @@ export async function getStaticProps({ params }) {
 }
 
 export default function VideoPage({ video }) {
-  const title = `Видео - Муса Яндиев - ${video.name}`
+  const description =
+    video.description ||
+    `Видео «${video.name}». Муса Яндиев.`
 
   return (
     <>
-      <Head>
-        <title>{title}</title>
-        <meta name="description" content={video.description || title} />
-      </Head>
+      <SeoHead
+        title={video.name}
+        description={description}
+        path={`/video/${video.id}/`}
+        type="video"
+        image={video.thumbnailUrl}
+        embedUrl={video.src}
+      />
 
       <Container className="mt-16 lg:mt-32">
         <div className="xl:relative">

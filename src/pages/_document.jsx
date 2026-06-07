@@ -56,12 +56,26 @@ export default function Document() {
         <link
           rel="alternate"
           type="application/rss+xml"
+          title="Статьи"
           href={`${SITE_URL}/rss/feed.xml`}
         />
         <link
           rel="alternate"
           type="application/feed+json"
+          title="Статьи"
           href={`${SITE_URL}/rss/feed.json`}
+        />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Книги"
+          href={`${SITE_URL}/rss/books.xml`}
+        />
+        <link
+          rel="alternate"
+          type="application/feed+json"
+          title="Книги"
+          href={`${SITE_URL}/rss/books.json`}
         />
         <link
           rel="apple-touch-icon"
