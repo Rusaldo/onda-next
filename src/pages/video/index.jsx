@@ -23,6 +23,15 @@ export const videoList = [
     description:
       'Сюжет о романе Г1алг1ай Иссы Кодзоева 2 часть, ГТРК Ингушетия, 01.12.2025, автор Хава Абадиева',
   },
+  {
+    id: '3',
+    name: 'ГIАЛГIАЙ ТАЙПАШ',
+    src: 'https://vk.ru/video_ext.php?oid=1088826051&id=456239019',
+    thumbnailUrl:
+      'https://iv.okcdn.ru/getVideoPreview?id=20810008955587&idx=2&type=39&tkn=-BX91H5AJEFgw_2Z_o3TQSzXfsw&fn=vid_u&scl=4',
+    description:
+      'Сюжет ГIАЛГIАЙ ТАЙПАШ НТРК Ингушетия от 15.08.2018. Муса Яндиев',
+  },
 ]
 
 function VideoCard({ video }) {

@@ -11,7 +11,11 @@ import { generateSeoAssets } from '@/lib/generateSeoAssets'
 import { getAllArticles } from '@/lib/getAllArticles'
 import { getAllBooks } from '@/lib/getAllBooks'
 import { HomeArticles } from '@/components/HomeArticles'
+import { HomeAudio } from '@/components/HomeAudio'
 import { HomeBooks } from '@/components/HomeBooks'
+import { HomeVideo } from '@/components/HomeVideo'
+import { audioList } from '@/pages/audio'
+import { videoList } from '@/pages/video'
 
 function MailIcon(props) {
   return (
@@ -317,7 +321,7 @@ function Books() {
   )
 }
 
-export default function Home({ articles, books }) {
+export default function Home({ articles, books, audios, videos }) {
   return (
     <>
       <SeoHead
@@ -360,12 +364,18 @@ export default function Home({ articles, books }) {
       </Container>
       {/* <Photos /> */}
       <Container className="mt-24 md:mt-28">
-        <div className="mx-auto grid max-w-xl grid-cols-1 gap-x-20 gap-y-12 lg:max-w-none lg:grid-cols-5">
+        <div className="mx-auto grid max-w-xl grid-cols-1 gap-x-20 gap-y-20 lg:max-w-none lg:grid-cols-5">
           <div className="lg:col-span-3">
             <HomeArticles articles={articles} />
           </div>
           <div className="lg:col-span-2">
             <HomeBooks books={books} />
+          </div>
+          <div className="lg:col-span-3">
+            <HomeAudio audios={audios} />
+          </div>
+          <div className="lg:col-span-2">
+            <HomeVideo videos={videos} />
           </div>
           {/* <div className="space-y-10 lg:pl-16 xl:pl-24">
             <Books /> */}
@@ -391,6 +401,8 @@ export async function getStaticProps() {
       books: (await getAllBooks())
         .slice(0, 3)
         .map(({ component, ...meta }) => meta),
+      audios: audioList.slice(0, 3),
+      videos: videoList.slice(0, 3),
     },
   }
 }

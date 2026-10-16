@@ -2,7 +2,7 @@ import { SeoHead } from '@/components/SeoHead'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import Link from 'next/link'
-import { audioList } from '.'
+import { AudioAnnotation, annotationPlainText, audioList } from '.'
 
 function ArrowLeftIcon(props) {
   return (
@@ -80,6 +80,8 @@ export default function AudioPage({ audio }) {
               <div className="mt-16 sm:mt-20">
                 <AudioCard audio={audio} />
               </div>
+
+              <AudioAnnotation annotation={audio.annotation} className="mt-6" />
             </article>
           </div>
         </div>

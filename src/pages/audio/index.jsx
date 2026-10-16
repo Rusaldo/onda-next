@@ -1,12 +1,61 @@
 import { SeoHead } from '@/components/SeoHead'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { Card } from '@/components/Card'
+import Link from 'next/link'
+import clsx from 'clsx'
+
+const annotationLinkPattern = /\[([^\]]+)\]\(([^)]+)\)/g
+
+export function annotationPlainText(annotation) {
+  return annotation.replace(annotationLinkPattern, '$1')
+}
+
+export function AudioAnnotation({ annotation, className }) {
+  if (!annotation) return null
+
+  const parts = []
+  const pattern = new RegExp(annotationLinkPattern.source, 'g')
+  let lastIndex = 0
+  let match
+  let key = 0
+
+  while ((match = pattern.exec(annotation)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(annotation.slice(lastIndex, match.index))
+    }
+
+    parts.push(
+      <Link
+        key={key++}
+        href={match[2]}
+        className="font-medium text-teal-500 underline decoration-teal-500/20 underline-offset-2 transition hover:text-teal-600 hover:decoration-teal-500 dark:text-teal-400 dark:decoration-teal-400/30 dark:hover:decoration-teal-400"
+      >
+        {match[1]}
+      </Link>
+    )
+    lastIndex = match.index + match[0].length
+  }
+
+  if (lastIndex < annotation.length) {
+    parts.push(annotation.slice(lastIndex))
+  }
+
+  return (
+    <p
+      className={clsx('text-base text-zinc-600 dark:text-zinc-400', className)}
+    >
+      {parts}
+    </p>
+  )
+}
 
 export const audioList = [
   {
     id: '6',
     name: 'Эса Марш',
     src: '/audio/6-esa-marsh.mp3',
+    annotation:
+      'Подробнее смотрите в книге Шийтта Шахар, [ссылка](/books/shiytta-shahar/)',
   },
   {
     id: '7',
@@ -41,7 +90,7 @@ export const audioList = [
 ]
 
 function AudioCard({ audio, onPlay }) {
-  const { id, name, src } = audio
+  const { id, name, src, annotation } = audio
 
   return (
     <div>
@@ -61,6 +110,7 @@ function AudioCard({ audio, onPlay }) {
           Ваш браузер не поддерживает воспроизведение аудио
         </audio>
       </Card.Description>
+      <AudioAnnotation annotation={annotation} className="mt-2" />
     </div>
   )
 }
